@@ -1,0 +1,87 @@
+<template>
+	<div class='-background -full-screen -min-view-size -section login'> 
+		<div class='-row middle'>
+			<div class='-image logo'> 
+				<img src='../../assets/images/logo.png'/>
+			</div>
+			<div class='-inline sep-v'/> 
+			<div class='-inline title'> 
+				企业信息管理系统
+			</div>
+			
+			<div class='-section dialog'> 
+				<div class='-text-size-big title'>用户登录</div>
+				<div class='item user-name'>
+					<input type='text' v-model='userName' placeholder='请输入用户名' class='-inline -text-size-middle'/>
+				</div>
+				<div class='item password'>
+					<input type='password' v-model='password' placeholder='请输入密码' class='-inline -text-size-middle'/>
+				</div>
+				<div class='item login-button'>
+					<div class='-inline -button-red -text-size-big -ef-click' @click='onClickLogin' >登录</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+import server from '../../utils/server';
+import message from '../../utils/message';
+
+export default {
+	name: 'Login', 
+	
+	data() {
+		return {
+			userName: '',
+			password: ''
+		};
+	},
+
+	methods: {
+		onClickLogin: function (e) {
+			console.log('On click login button.');
+			let _this = this;
+			let userName = this.userName;
+			let password = this.password;
+			
+			// 验证账号密码非空
+			if (userName === '') {
+				message.error(this, '请输入账号');
+				return;
+			} else if (password === '') {
+				message.error(this, '请输入密码');
+				return;
+			}
+
+			// 登录
+			server.login(this.userName, this.password).then(function(data) {
+				console.log('on click login success');
+				console.log('data:' + JSON.stringify(data));
+				data = JSON.parse(data);
+				if (data.code === 0) {
+					// token
+					localStorage.setItem('token', data.token);
+
+					_this.$router.push({
+						path: '/Home',
+						name: 'Home'
+					});
+				} else {
+					message.error(_this, data.msg);
+				}
+			}).catch(function (error) {
+				console.log('on click login fail');
+				console.log('error:' + JSON.stringify(error));
+
+				message.error(_this, '登录请求失败');
+			});		
+		}
+	}
+};
+</script>
+
+<style scoped src='./Login.less' lang='less'/>
+<style scoped>
+</style>

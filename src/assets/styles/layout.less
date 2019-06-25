@@ -1,0 +1,84 @@
+/*
+	layout
+*/
+@default-row-height: 50px;
+
+.-scroll-y {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.-scroll-none {
+	overflow: hidden;
+}
+
+.-inline {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.-row {
+	display: block;
+	overflow: hidden;
+
+	width: 100%;
+	height: @default-row-height;
+	line-height: @default-row-height;
+	background-color: transparent;
+	text-align: left;	
+}
+
+.-section {
+	.-inline();
+	
+	width: 100%;
+	min-height: @default-row-height;
+	line-height: @default-row-height;
+	background-color: transparent;
+	text-align: left;
+}
+
+.-single-line {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;	
+}
+
+.-multi-line {
+	overflow: hidden;
+	
+	height: auto;
+}
+
+.-image {
+	.-inline();
+	text-align: center;
+	
+	& > img {
+		display: inline-block;
+		vertical-align: middle;		
+	}
+}
+
+.-left {
+	.-inline();
+	float: left;
+	
+	width: auto;
+}
+
+.-right {
+	.-inline();
+	float: right;
+
+	width: auto;	
+}
+
+.-center-content {
+	text-align: center;
+}
+
+.-fixed {
+	position: fixed;
+}
+

@@ -1,0 +1,76 @@
+/*
+	global style
+*/
+@import './tricks';
+@import './layout';
+@import './text';
+@import './input';
+@import './button';
+@import './border';
+/*
+@import './element-ui/el-tabs';
+@import './element-ui/el-select';
+*/
+
+.-full-screen {
+	width: 100wh;
+	height: 100vh;
+}
+
+.-full-screen-fixed {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.-min-view-size {
+	min-width: 1300px;
+	min-height: 600px;
+}
+
+body {
+	margin: 0;
+}
+
+#app {
+	.-full-screen-fixed;
+	.-scroll-none;
+	.-min-view-size;
+	
+	margin: 0;
+	padding: 0;
+
+	background-color: #dedede;
+	font-size: 13px;
+}
+
+.-mask {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	
+	background-color: black;
+	-khtml-opacity: 0.7;
+	-moz-opacity: 0.7; 
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+}
+
+.-background {
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.-background-color {
+	background-color: white;
+}
+
+.-hidden {
+	display: none;
+}
+

@@ -1,0 +1,51 @@
+/*
+	tricks style
+*/
+
+.-ef-click:active {
+	background-color: #eeeeee;
+}
+
+.-button-red.-ef-click:active {
+	background-color: #cc0000;
+}
+
+.-ef-click, .-ef-click * {
+	cursor: pointer;
+}
+
+.-ef-hover:hover {
+	background-color: #eeeeee;
+}
+
+.-ef-hover, .-ef-hover * {
+	cursor: pointer;
+}
+
+.-box-shadow {
+    -moz-box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999')";
+}
+
+.-triangle-up {
+	display: inline-block;
+    
+	width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom-color: gray;
+
+}
+
+.-opacity(@op: 1) {
+	-moz-opacity: @op; // firefox
+	-khtml-opacity: @op; // KDEµÄhtmlÒýÇæ
+	opacity: @op;
+	
+	@op-ie: @op * 100;
+	filter:alpha(opacity=@op-ie);	
+}
+
