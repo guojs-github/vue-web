@@ -57,22 +57,15 @@ export default {
 
 			// 登录
 			server.login(this.userName, this.password).then(function(data) {
-				console.log('on click login success');
-				console.log('data:' + JSON.stringify(data));
-				data = JSON.parse(data);
-				if (data.code === 0) {
-					// token
-					localStorage.setItem('token', data.token);
+				console.log('Login success');
 
-					_this.$router.push({
-						path: '/Home',
-						name: 'Home'
-					});
+				if (data.code === 0) {
+					message.error(_this, '登录请求成功');
 				} else {
-					message.error(_this, data.msg);
+					message.error(_this, '登录请求失败');
 				}
 			}).catch(function (error) {
-				console.log('on click login fail');
+				console.log('Login fail');
 				console.log('error:' + JSON.stringify(error));
 
 				message.error(_this, '登录请求失败');
