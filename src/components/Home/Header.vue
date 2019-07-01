@@ -5,7 +5,7 @@
 				<img src='../../assets/images/logo.png'/>
 			</div>
 			<div class='-text-size-big -text-white -left title'>
-				<!--{{ $t('title') }}-->
+				{{ $t('title') }}
 			</div>
 		</div>
 		<div class='-right right'>

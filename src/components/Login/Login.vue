@@ -39,6 +39,11 @@ export default {
 		};
 	},
 
+	created() {
+		console.log('login created');
+		this.$title('登录');
+	},
+
 	methods: {
 		onClickLogin: function (e) {
 			console.log('On click login button.');
