@@ -60,7 +60,13 @@ export default {
 				console.log('Login success');
 
 				if (data.code === 0) {
-					message.error(_this, '登录请求成功');
+					// token
+					// localStorage.setItem('token', data.token);
+
+					_this.$router.push({
+						path: '/Home',
+						name: 'Home'
+					});
 				} else {
 					message.error(_this, '登录请求失败');
 				}

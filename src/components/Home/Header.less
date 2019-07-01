@@ -1,0 +1,43 @@
+/*
+  Home page header style
+*/
+@import '../../assets/styles/constants';
+@import './HomeConstants';
+
+.header {
+	width: 100%;
+	height: @header-height;
+	background-color: @color-red;
+	justify-content: space-between;
+	
+	& > .left {
+		height: 60px;
+		line-height: 60px;
+		
+		.logo > img {
+			margin-left: 20px;
+			width: 50px;
+		} 
+	
+		.title {
+			margin-left: 25px;
+		}
+	}
+
+	& > .right {
+		justify-content: flex-end;
+		height: 60px;
+		line-height: 60px;
+				
+		& > .user {
+			margin-right: 50px;
+			div + div {
+				margin-left: 15px; 
+			}
+		}
+
+		& > .settings {
+			margin-right: 20px;
+		}
+	}
+}
