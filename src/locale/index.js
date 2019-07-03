@@ -4,7 +4,7 @@
 
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import browser from '../utils/browser';
+import browser from '../utils/common/browser';
 
 Vue.use(VueI18n);
 const DEFAULT_LANG = 'zh';

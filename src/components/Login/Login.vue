@@ -26,8 +26,6 @@
 </template>
 
 <script>
-import server from '../../utils/server';
-import message from '../../utils/message';
 
 export default {
 	name: 'Login', 
@@ -53,33 +51,38 @@ export default {
 			
 			// 验证账号密码非空
 			if (userName === '') {
-				message.error(this, '请输入账号');
+				this.$utils.message.error(this, '请输入账号');
 				return;
 			} else if (password === '') {
-				message.error(this, '请输入密码');
+				this.$utils.message.error(this, '请输入密码');
 				return;
 			}
 
 			// 登录
-			server.login(this.userName, this.password).then(function(data) {
+			this.$utils.server.login(this.userName, this.password).then(function(data) {
 				console.log('Login success');
 
 				if (data.code === 0) {
 					// token
-					// localStorage.setItem('token', data.token);
+					let userInfo = {
+						name: data.name,
+						role: data.role,
+						token: data.token
+					};
+					_this.$utils.cache.user(userInfo);
 
 					_this.$router.push({
 						path: '/Home',
 						name: 'Home'
 					});
 				} else {
-					message.error(_this, '登录请求失败');
+					this.$utils.message.error(_this, '登录请求失败');
 				}
 			}).catch(function (error) {
 				console.log('Login fail');
 				console.log('error:' + JSON.stringify(error));
 
-				message.error(_this, '登录请求失败');
+				this.$utils.message.error(_this, '登录请求失败');
 			});		
 		}
 	}

@@ -2,14 +2,15 @@
 	Browser storage routine.
 	2018.8.6 By GuoJS
 */
-var myApi = myApi || {};
-myApi.storage = (new (function () {
+import cookie from './cookie';
+
+const storage = (new (function () {
 	var storage;
 	
 	if (window.localStorage) {
 		storage = window.localStorage;
 	} else {
-		storage = require('./cookie.js')();
+		storage = cookie;
 	}
 	
 	this.setItem = function(key, value) {
@@ -28,4 +29,6 @@ myApi.storage = (new (function () {
 	this.clear = function() {
 		storage.clear();
 	};
-}());
+})());
+
+export default storage;

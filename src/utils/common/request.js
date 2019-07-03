@@ -2,7 +2,7 @@
 	communication utility
 */
 import axios from 'axios';
-import loading from './loading';
+import loading from '../interface/loading';
 
 const request = {
 	timeout: 3000,

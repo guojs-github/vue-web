@@ -1,8 +1,8 @@
 /*
   Sever business interface
 */
+import request from './common/request';
 import config from './config';
-import request from './request';
 
 const server = {
 	// 样例接口

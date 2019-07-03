@@ -1,3 +1,6 @@
 {
-    "code":0
+    "code":0,
+	"name":"Joseph",
+	"role": "Administrator",
+	"token": "askldfafjj lasdfklasdjklasdjfkla sjl"
 }

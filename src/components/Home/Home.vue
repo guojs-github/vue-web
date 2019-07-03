@@ -24,10 +24,26 @@ export default {
 	created() {
 		console.log('Home created');
 		this.$utils.common.title(this.$t('title'));
+		this.checkLogin();
 	},
 	
 	methods: {		
 		/*************************/
+		checkLogin() {
+			console.log('Check login');
+			
+			let user = this.$utils.cache.user();
+			if ((typeof user === 'object')
+				&& (typeof user.token === 'string')
+				&& (user.token.trim().length > 0)) {
+				return;
+			}
+			
+			this.$router.push({
+				path: '/',
+				name: 'Login'
+			});
+		}
 	}
 };
 </script>

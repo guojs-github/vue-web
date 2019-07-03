@@ -2,8 +2,7 @@
 	Cookie
 */
 
-var myApi = myApi || {};
-myApi.cookie = (new (function () {
+const cookie = (new (function () {
 	var maxage = 60 * 60 * 24 * 1000;
 	var path = '/';
  
@@ -102,3 +101,5 @@ myApi.cookie = (new (function () {
 		this.length = 0;
 	};
 })());
+
+export default cookie;
