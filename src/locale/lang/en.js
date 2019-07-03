@@ -3,5 +3,6 @@
 */
 
 module.exports = {
-	title: 'English title'
+	title: 'Enterprise Information Management System',
+	loginTitle: 'Login'
 };

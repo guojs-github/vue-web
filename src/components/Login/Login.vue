@@ -6,7 +6,7 @@
 			</div>
 			<div class='-inline sep-v'/> 
 			<div class='-inline title'> 
-				企业信息管理系统
+				{{ $t('title') }}
 			</div>
 			
 			<div class='-section dialog'> 
@@ -41,7 +41,7 @@ export default {
 
 	created() {
 		console.log('login created');
-		this.$title('登录');
+		this.$utils.common.title(this.$t('loginTitle'));
 	},
 
 	methods: {

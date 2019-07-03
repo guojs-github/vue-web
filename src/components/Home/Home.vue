@@ -23,7 +23,7 @@ export default {
 
 	created() {
 		console.log('Home created');
-		// this.$title('海航控股精益供应链管理系统');
+		this.$utils.common.title(this.$t('title'));
 	},
 	
 	methods: {		

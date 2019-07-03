@@ -4,6 +4,7 @@
 
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
+import browser from '../utils/browser';
 
 Vue.use(VueI18n);
 const DEFAULT_LANG = 'zh';
@@ -12,8 +13,15 @@ const locales = {
 	en: require('./lang/en.js')
 };
 
+var language = DEFAULT_LANG;
+if (browser.isChinese()) {
+	language = 'zh'
+} else {
+	language = 'en'
+}
+
 const i18n = new VueI18n({
-	locale: DEFAULT_LANG,
+	locale: language,
 	messages: locales
 });
 

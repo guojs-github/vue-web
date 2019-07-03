@@ -7,11 +7,11 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App'
 import router from './router'
 import i18n from './locale';
-import title from './utils/title';
+import utils from './utils/utils';
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
-Vue.use(title);
+Vue.use(utils);
 
 /* eslint-disable no-new */
 new Vue({
