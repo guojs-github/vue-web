@@ -1,0 +1,23 @@
+/*
+  Home page search menu box
+*/
+@import '../../assets/styles/constants';
+@import './HomeConstants';
+
+@item-height: 20px;
+
+div.menu-dropdown-list-item {
+	& > div.path {
+		height: @item-height;
+		line-height: @item-height;
+	}
+
+	& > div.label {
+		height: @item-height;
+		line-height: @item-height;
+	}
+}
+
+li.el-select-dropdown__item.menu-dropdown-list + li.el-select-dropdown__item.menu-dropdown-list {
+	margin-top: 10px;
+}

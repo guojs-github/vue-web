@@ -1,0 +1,66 @@
+/*
+  Home page side bar style
+*/
+@import '../../assets/styles/constants';
+@import './HomeConstants';
+
+@bottom-height: 40px;
+@margin-v: 5px;
+
+.side-bar {
+	position: absolute;
+	left: 0;
+	top: @header-height;
+	bottom: 0;
+	z-index: @z-index-middle;
+	overflow: hidden;
+
+	& > div {
+		width: 100%;
+		height: 40px;
+		min-height: 40px;
+		line-height: 40px;		
+	}
+	
+	& > div + div {
+		margin-top: @margin-v;
+	}		
+
+	background-color: white;
+
+	& > .search-icon {
+		margin: 0;
+		background-color: @color-pink;
+		
+	}
+	
+	&.shrinked {
+		width: @side-bar-width-shrinked;				
+		
+		& > .bottom {
+			margin-top: calc(100vh - @header-height - @menu-search-height - @bottom-height + @margin-v);
+		}
+	}
+	
+	&.expanded {
+		width: @side-bar-width-expanded;
+				
+		& > .menu {
+			height: calc(100vh - @header-height - @menu-search-height - @bottom-height); 
+		}		
+		
+		& > .bottom {
+			margin-top: 0;
+		}
+	}
+		
+	& > .bottom {
+		margin-top: 0;
+		height: @bottom-height;
+		line-height: @bottom-height;	
+		
+		& > .-image {
+			width: @side-bar-width-shrinked;
+		}
+	}
+}

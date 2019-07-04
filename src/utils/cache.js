@@ -19,6 +19,21 @@ const cache = {
 				
 			return JSON.parse(retValue);			
 		}
+	},
+	
+	token: function() {
+		console.log('Read token');
+		let key = 'eims-user';
+
+		try {			
+			let value = JSON.parse(storage.getItem(key));
+
+			console.log('token:' + value.token);
+			return value.token;
+		} catch (error) {
+			console.log('token:');
+			return '';
+		}
 	}
 };
 

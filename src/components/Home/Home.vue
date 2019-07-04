@@ -3,16 +3,20 @@
 		<div class='top'>
 			<Header/>
 		</div>
+		<SideBar @lock='onLockSidebar'/>
 	</div>
 </template>
 
 <script>
 import Header from '@/components/Home/Header';
+import SideBar from '@/components/Home/SideBar';
+
 export default {
 	name: 'Home', 
 	
 	components: {
-		Header
+		Header,
+		SideBar
 	},
 	
 	data() {
@@ -28,6 +32,17 @@ export default {
 	},
 	
 	methods: {		
+		onLockSidebar(flag) {
+			console.log('On lock sidebar');
+			console.log('flag:' + flag);
+			
+			if (flag) {
+				this.contentStatus = 'shrinked';
+			} else {
+				this.contentStatus = 'expanded';
+			}
+		},
+
 		/*************************/
 		checkLogin() {
 			console.log('Check login');

@@ -1,0 +1,19 @@
+{
+    "code":0,
+    "menu":[{
+			"label": "样例菜单",
+			"children": [{
+				"label": "样例字典",
+				"key": "/Sample/Dic"
+			}, {
+				"label": "样例查询",
+				"key": "/Sample/List"
+			}, {
+				"label": "样例单据",
+				"key": "/Sample/Bill",
+				"param": {
+					"id": "1"
+				}					
+			}]
+		}]
+}
