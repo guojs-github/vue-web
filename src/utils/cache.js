@@ -4,6 +4,12 @@
 import storage from './common/storage';
 
 const cache = {
+	clear: function() {
+		console.log('Clear cached data.');
+
+		storage.clear();
+	},
+
 	user: function(value) {
 		console.log('Cache user information');
 		console.log('value:' + JSON.stringify(value));
@@ -31,7 +37,7 @@ const cache = {
 			console.log('token:' + value.token);
 			return value.token;
 		} catch (error) {
-			console.log('token:');
+			console.log('Cached token is invalid');
 			return '';
 		}
 	}

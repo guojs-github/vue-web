@@ -45,6 +45,31 @@ const server = {
 		return p;
 	},
 	
+	checkLogin: function() {
+		console.log('Check login request');
+
+		let p = new Promise( function(resolve, reject) {
+			let token = cache.token();
+			if (!((typeof token === 'string') && (token.trim().length > 0))) {
+				console.log('Empty token');
+				reject(new Error('Empty token'));
+			}
+						
+			let url = config.server + '/static/CheckLogin.txt?token=' + token;
+			console.log(url);
+
+			request.get(url).then(function(data) {
+				console.log('Check Login request success');
+				resolve(data);
+			}).catch(function (error) {
+				console.log('Check login request fail.');
+
+				reject(error);
+			});			
+		});
+		return p;		
+	},
+	
 	menu: function() {
 		console.log('menu request');
 

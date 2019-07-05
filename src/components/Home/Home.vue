@@ -27,8 +27,8 @@ export default {
 
 	created() {
 		console.log('Home created');
-		this.$utils.common.title(this.$t('title'));
-		this.checkLogin();
+		
+		this.init();
 	},
 	
 	methods: {		
@@ -44,21 +44,45 @@ export default {
 		},
 
 		/*************************/
+		init() {
+			console.log('Initialize Home.');
+			
+			// title
+			this.$utils.common.title(this.$t('title'));
+			// Login ?
+			this.checkLogin();
+			// Call when page closed
+			this.$utils.events.beforeunload(this.unInit);
+		},
+		
+		unInit() {
+			console.log('Uninitialize.');
+			
+			this.$utils.cache.clear();
+		},
+		
 		checkLogin() {
 			console.log('Check login');
+			let _this = this;
 			
-			let user = this.$utils.cache.user();
-			if ((typeof user === 'object')
-				&& (typeof user.token === 'string')
-				&& (user.token.trim().length > 0)) {
-				return;
-			}
-			
-			this.$router.push({
-				path: '/',
-				name: 'Login'
+			this.$utils.server.checkLogin().then(function(data) {
+				console.log('Check Login request success');
+				
+				if (data.code !== 0) {
+					_this.$router.push({
+						path: '/',
+						name: 'Login'
+					});
+				}
+			}).catch(function (error) {
+				console.log('Check login request fail.');
+
+				_this.$router.push({
+					path: '/',
+					name: 'Login'
+				});
 			});
-		}
+		} // checkLogin
 	}
 };
 </script>
