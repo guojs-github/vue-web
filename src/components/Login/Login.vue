@@ -1,5 +1,5 @@
 <template>
-	<div class='-background -full-screen -min-view-size -section login'> 
+	<div id='login' class='-background -full-screen -min-view-size -section login'> 
 		<div class='-row middle'>
 			<div class='-image logo'> 
 				<img src='../../assets/images/logo.png'/>
@@ -9,16 +9,16 @@
 				{{ $t('title') }}
 			</div>
 			
-			<div class='-section dialog'> 
+			<div id='login-dialog' class='-section dialog'> 
 				<div class='-text-size-big title'>用户登录</div>
 				<div class='item user-name'>
-					<input type='text' v-model='userName' placeholder='请输入用户名' class='-inline -text-size-middle'/>
+					<input :id='prefix + "-user-name"' type='text' v-model='userName' placeholder='请输入用户名' class='-inline -text-size-middle' v-enter-next='prefix + "-password"'/>
 				</div>
 				<div class='item password'>
-					<input type='password' v-model='password' placeholder='请输入密码' class='-inline -text-size-middle'/>
+					<input :id='prefix + "-password"' type='password' v-model='password' placeholder='请输入密码' class='-inline -text-size-middle'  v-on:keyup.enter='onClickLogin' v-enter-next='prefix + "-user-name"'/>
 				</div>
 				<div class='item login-button'>
-					<div class='-inline -button-red -text-size-big -ef-click' @click='onClickLogin' >登录</div>
+					<div :id='prefix + "-login-button"' class='-inline -button-red -text-size-big -ef-click' @click='onClickLogin'>登录</div>
 				</div>
 			</div>
 		</div>
@@ -32,6 +32,7 @@ export default {
 	
 	data() {
 		return {
+			prefix: 'login-dialog',
 			userName: '',
 			password: ''
 		};
@@ -39,7 +40,8 @@ export default {
 
 	created() {
 		console.log('login created');
-		this.$utils.common.title(this.$t('loginTitle'));
+		
+		this.init();
 	},
 
 	methods: {
@@ -84,7 +86,14 @@ export default {
 
 				this.$utils.message.error(_this, '登录请求失败');
 			});		
-		}
+		}, // onClickLogin
+		
+		/*****************************/
+		init: function() {
+			console.log('Initialize the Login component');
+			
+			this.$utils.common.title(this.$t('loginTitle'));						
+		} // init
 	}
 };
 </script>
