@@ -12,13 +12,13 @@
 			<div id='login-dialog' class='-section dialog'> 
 				<div class='-text-size-big title'>用户登录</div>
 				<div class='item user-name'>
-					<input :id='prefix + "-user-name"' type='text' v-model='userName' placeholder='请输入用户名' class='-inline -text-size-middle' v-enter-next='prefix + "-password"'/>
+					<input id='user-name' type='text' v-model='userName' placeholder='请输入用户名' class='-inline -text-size-middle' v-enter-next='{next: "div#login-dialog input#password"}' autofocus='autofocus'/>
 				</div>
 				<div class='item password'>
-					<input :id='prefix + "-password"' type='password' v-model='password' placeholder='请输入密码' class='-inline -text-size-middle'  v-on:keyup.enter='onClickLogin' v-enter-next='prefix + "-user-name"'/>
+					<input id='password' type='password' v-model='password' placeholder='请输入密码' class='-inline -text-size-middle'  v-on:keyup.enter='onClickLogin'/>
 				</div>
 				<div class='item login-button'>
-					<div :id='prefix + "-login-button"' class='-inline -button-red -text-size-big -ef-click' @click='onClickLogin'>登录</div>
+					<div id='login-button' class='-inline -button-red -text-size-big -ef-click' @click='onClickLogin'>登录</div>
 				</div>
 			</div>
 		</div>
@@ -32,7 +32,6 @@ export default {
 	
 	data() {
 		return {
-			prefix: 'login-dialog',
 			userName: '',
 			password: ''
 		};
@@ -53,10 +52,12 @@ export default {
 			
 			// 验证账号密码非空
 			if (userName === '') {
-				this.$utils.message.error(this, '请输入账号');
+				this.$utils.interface.message.error(this, '请输入账号');
+				this.$utils.interface.input.focus('div#login-dialog input#user-name');
 				return;
 			} else if (password === '') {
-				this.$utils.message.error(this, '请输入密码');
+				this.$utils.interface.message.error(this, '请输入密码');
+				this.$utils.interface.input.focus('div#login-dialog input#password');
 				return;
 			}
 
@@ -78,13 +79,13 @@ export default {
 						name: 'Home'
 					});
 				} else {
-					this.$utils.message.error(_this, '登录请求失败');
+					this.$utils.interface.message.error(_this, '登录请求失败');
 				}
 			}).catch(function (error) {
 				console.log('Login fail');
 				console.log('error:' + JSON.stringify(error));
 
-				this.$utils.message.error(_this, '登录请求失败');
+				this.$utils.interface.message.error(_this, '登录请求失败');
 			});		
 		}, // onClickLogin
 		

@@ -1,0 +1,45 @@
+/*
+	Element ui tabs control
+*/
+
+@import '../constants';
+@import '../../../components/Home/HomeConstants';
+
+.home > .bottom > .content {
+	& > .tabs {
+		background-color: transparent;
+		
+		& > .el-tabs__header {
+			background-color: transparent;
+			& > .el-tabs__nav-wrap {
+				& > .el-tabs__nav-scroll {
+					& > .el-tabs__nav {
+						& > .el-tabs__item.is-top {
+							height: @content-tabs-height;
+							line-height: @content-tabs-height;
+							
+							&.is-active {
+								color: @color-red;
+							}
+							
+							&:not(.is-disabled):hover {
+								color: @color-red;								
+							}
+							
+							&#tab-home-page > span.el-icon-close {
+								display: none;	/* é¦–é¡µtabæ³¨é”€ */								
+							}
+						}
+					}
+				}
+			}
+		}
+		& > .el-tabs__content {
+			padding: @content-tab-padding;
+			height: calc(100vh - @header-height - @content-padding * 2 - @content-tabs-height - @content-tab-padding * 2);
+			background-color: white;
+			
+			overflow: auto;
+		}
+	}
+}

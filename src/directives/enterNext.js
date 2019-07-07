@@ -2,6 +2,8 @@
 	Directive enter next
 */
 import Vue from 'vue';
+import string from '../utils/common/string';
+import object from '../utils/common/object';
 
 const enterNext = {
 	install: function() {
@@ -12,19 +14,21 @@ const enterNext = {
 				console.log('Enter next handler inserted.');
 				let id = el.id; console.log('ID:' + id);
 				let tagName = el.tagName; console.log('Tag name:' + tagName);
-				let expression = binding.expression; console.log('Binding expression:' + expression); // 指令绑定的原始表达式
-				let value = binding.value; console.log('Binding value:' + binding.value); // 指令绑定原始表达式的计算结果值
+				let expression = binding.expression; console.log('Binding expression:' + expression); // 命令绑定的原始表达式
+				let value = binding.value; console.log('Binding value:' + JSON.stringify(binding.value)); // 命令绑定的原始表达式的运行值
 				let target = null;
 				
 				// Check
 				if (tagName.trim().toLowerCase() !== 'input') {
 					return;
 				}
-				if ((typeof value === 'string') && (value.trim().length > 0)) {
-					target = document.querySelector('#' + value);			
-				} else if ((typeof expression === 'string') && (expression.trim().length > 0)) {
-					target = document.querySelector('#' + expression);			
+				if (!object.isValid(value)) {
+					return null;
 				}
+				if (!string.isValid(value.next)) {
+					return null;
+				}
+				target = document.querySelector(value.next);			
 				if (target === null) { // Invalid target element
 					return;
 				}

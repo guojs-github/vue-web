@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import pinyin from '../../utils/pinyin';
 
 export default {
 	name: 'SearchMenu', 
@@ -92,8 +91,8 @@ export default {
 			for (let i = 0; i < this.options.length; i++) {
 				let allOption = this.options[i];
 				allOption.name = allOption.label.toLowerCase(); 
-				allOption.full = pinyin.getFullChars(allOption.label).toLowerCase(); 
-				allOption.camel = pinyin.getCamelChars(allOption.label).toLowerCase(); 
+				allOption.full = this.$utils.pinyin.getFullChars(allOption.label).toLowerCase(); 
+				allOption.camel = this.$utils.pinyin.getCamelChars(allOption.label).toLowerCase(); 
 				allOption.value = i;
 				this.allOptions[this.allOptions.length] = allOption;
 			}

@@ -1,0 +1,166 @@
+/*
+	Element ui select control
+*/
+
+@import '../constants';
+
+div.el-select {
+	width: calc(100% - @input-padding-h * 2);
+
+	input.el-input__inner {
+		padding: 0 @input-padding-h;
+		border: 1px solid #c4c4c4;
+		color: black
+	}
+}
+
+
+.search {
+	text-align: center;
+	input.el-select__input {
+		padding: 0 10px;
+		border-color: #D70110;
+	}
+	
+	.el-select{
+		.el-input {
+			input {
+				padding: 0 45px;
+				background-image: url('../../../assets/images/magnifier.png');
+				background-repeat: no-repeat;
+				background-position: left center;
+				border-radius: 0;
+				border-top: 0;
+				border-left: 0;
+				border-right: 0;
+				border-bottom: 1px solid @color-red;
+				cursor: auto;
+			}
+		}
+		.is-focus{
+			.el-input__inner{
+				border-color: @color-red;
+			}
+		}
+		.el-select__caret{
+			cursor: default;
+		}
+	}
+}
+
+@menu-search-input-height: 30px;
+@menu-search-input-left: 45px;
+@menu-search-input-right: 10px;
+
+.search.menu-search {
+	background-color: @color-pink;
+	
+	& > div.el-select {
+		width: 100%;
+		background-image: url('../../../assets/images/magnifier.png');
+		background-repeat: no-repeat;
+		background-position: 10px 7px;
+
+		& > div.el-input.el-input--suffix {
+			& > input.el-input__inner {
+				padding: 0;
+				margin-left: @menu-search-input-left;
+
+				width: calc(100% - @menu-search-input-left - @menu-search-input-right);
+				height: @menu-search-input-height;
+				line-height: @menu-search-input-height;
+				
+				background-color: transparent;
+				background-image: none;		
+			}
+			
+			&.is-focus > input.el-input__inner {
+				border-color: @color-red;
+			}
+		}
+	}	
+}
+// append input
+.el-input-group--append{
+	width: calc(100% - @input-padding-h * 2);
+	input.el-input__inner{
+		padding: 0 @input-padding-h;
+	}
+	div.el-input-group__append{
+		background-color: #fff;
+	}
+}
+div.el-select-dropdown.el-popper {
+	& ul.el-scrollbar__view.el-select-dropdown__list {
+		& > li.el-select-dropdown__item.menu-dropdown-list {
+			height: auto;
+		}
+	}
+}
+ 
+// airport grid
+.grid{
+	tr.el-table__row{
+		div.el-input{
+			input.el-input__inner{
+				border: 1px solid #c4c4c4;
+				height: 26px;
+				line-height: 10px;
+			}
+		}
+		div.el-select{
+			i.el-input__icon{
+				line-height: 26px;
+			}
+		}
+		div.el-input__inner{
+			border: 1px solid #c4c4c4;
+			height: 26px;
+			width: 220px;
+		}
+		// picker
+		div.cell{
+			div.el-input{
+				width: 100%;
+				i.el-input__icon{
+					line-height: 100%;
+				}
+			}
+		}
+	}
+}
+// pagination
+div.pagination{
+	.el-pagination button:disabled{
+		cursor: auto;
+	}
+	button{
+		border-radius: 20px !important;
+	}
+	ul.el-pager li{
+		border-radius: 20px !important;
+	} 
+	.el-pagination.is-background .el-pager li:not(.disabled).active{
+		background-color: @color-red;
+	}
+}
+
+// components query query condition picker
+.query{
+	.condition{
+		div.value{
+			div.el-input__inner{
+				width: 100%;
+				padding: 3px 5px;
+			}
+		}
+	}
+	.grid{
+		.grid{
+			tr.el-table__row{
+				cursor: pointer;
+			}
+		}
+	}
+	
+}
