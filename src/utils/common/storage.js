@@ -4,7 +4,7 @@
 */
 import cookie from './cookie';
 
-const storage = (new (function () {
+const storage = (new function () {
 	var storage;
 	
 	if (window.localStorage) {
@@ -29,6 +29,6 @@ const storage = (new (function () {
 	this.clear = function() {
 		storage.clear();
 	};
-})());
+}());
 
 export default storage;
