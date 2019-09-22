@@ -3,25 +3,30 @@
 		<div class='top'>
 			<Header/>
 		</div>
-		<SideBar @lock='onLockSidebar'/>
+		<SideBar/>
+		<div class='-flex-row bottom'>
+			<Content/>
+		</div>
 	</div>
 </template>
 
 <script>
 import Header from '@/components/Home/Header';
 import SideBar from '@/components/Home/SideBar';
+import Content from '@/components/Home/Content';
 
 export default {
 	name: 'Home', 
 	
 	components: {
 		Header,
-		SideBar
+		SideBar,
+		Content
 	},
 	
 	data() {
 		return {
-			contentStatus: 'expanded'
+			contentStatus: 'expand'
 		};
 	},
 
@@ -31,18 +36,7 @@ export default {
 		this.init();
 	},
 	
-	methods: {		
-		onLockSidebar(flag) {
-			console.log('On lock sidebar');
-			console.log('flag:' + flag);
-			
-			if (flag) {
-				this.contentStatus = 'shrinked';
-			} else {
-				this.contentStatus = 'expanded';
-			}
-		},
-
+	methods: {
 		/*************************/
 		init() {
 			console.log('Initialize Home.');

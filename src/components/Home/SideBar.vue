@@ -77,17 +77,19 @@ export default {
 			
 			if ((typeof e.key === 'string') && (e.key.trim().length > 0)) {
 				console.log('Try to open menu');
-				
 				let menu = {
 					label: e.label,
 					key: e.key,
 					param: e.param
 				};
 
+				this.$utils.eventBus.$emit('open-menu', menu);
+				/*
 				this.$store.commit({
 					type: OPEN_MENU,
 					menu: menu
 				});
+				*/
 			} 
 		},
 		
@@ -98,6 +100,7 @@ export default {
 			this.status = 'expanded';
 			
 			this.$emit('lock', this.locked);
+			this.$utils.eventBus.$emit('sidebar-status-change', 'expand');
 		},
 
 		onClickUnlockSidebar: function(e) {
@@ -106,6 +109,7 @@ export default {
 			this.locked = false;
 
 			this.$emit('lock', this.locked);
+			this.$utils.eventBus.$emit('sidebar-status-change', 'shrink');
 		},
 		
 		/********************************/

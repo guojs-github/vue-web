@@ -1,0 +1,25 @@
+/*
+  Home page content style
+*/
+@import '../../assets/styles/constants';
+@import './HomeConstants';
+
+.content {
+	&.header-shrink {
+		margin-top: calc(-1 * @header-height);
+	};
+	
+	padding: 5px;
+	&.expand {
+		margin-left: @side-bar-width-shrinked;
+		width: calc(100% - @side-bar-width-shrinked - @content-padding * 2);		
+	}
+
+	&.shrink {
+		margin-left: @side-bar-width-expanded;
+		width: calc(100% - @side-bar-width-expanded - @content-padding * 2);		
+	}
+	
+}
+
+
