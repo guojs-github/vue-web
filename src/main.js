@@ -4,15 +4,22 @@ import 'babel-polyfill';
 import Vue from 'vue';
 import App from './App'
 import router from './router'
+
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+import 'xe-utils';
+import VXETable from 'vxe-table';
+import 'vxe-table/lib/index.css';
+
 import i18n from './locale';
 import directives from './directives';
 import utils from './utils';
-
+	  
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(utils);
+Vue.use(VXETable);
 directives.install();
 
 /* eslint-disable no-new */

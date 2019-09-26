@@ -19,7 +19,7 @@
 			"label": "技术测试",
 			"children": [{
 				"label": "表格控件",
-				"key": "/Sample/GridSample"
+				"key": "/Sample/GridSample/index"
 			}]
 		}]
 }
