@@ -81,6 +81,7 @@ export default {
 			console.log('On focus');
 			
 			this.keywords = '';
+			this.onFilter(this.keywords);
 		},
 				
 		/**************************/

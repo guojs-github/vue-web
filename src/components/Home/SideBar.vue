@@ -10,10 +10,10 @@
 
 		<div class='bottom'>
 			<div class='-image -left lockSidebar' @click='onClickLockSidebar' v-if='!locked'>
-				<img src='../../assets/images/arrow-right.png'/>
+				<img class='-ef-click' src='../../assets/images/arrow-right.png'/>
 			</div>
 			<div class='-image -right unlockSidebar' @click='onClickUnlockSidebar' v-else>
-				<img src='../../assets/images/arrow-left.png'/>
+				<img class='-ef-click' src='../../assets/images/arrow-left.png'/>
 			</div>
 		</div>
 	</div>
@@ -84,12 +84,6 @@ export default {
 				};
 
 				this.$utils.eventBus.$emit('open-menu', menu);
-				/*
-				this.$store.commit({
-					type: OPEN_MENU,
-					menu: menu
-				});
-				*/
 			} 
 		},
 		
