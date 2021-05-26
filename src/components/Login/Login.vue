@@ -12,7 +12,14 @@
 			<div id='login-dialog' class='-section dialog'> 
 				<div class='-text-size-big title'>用户登录</div>
 				<div class='item user-name'>
+					<heel-input 
+						v-model ='userName'
+						mode='edit'
+						placeholder='请输入用户名'
+						:maxlength='10' />
+					<!--
 					<input id='user-name' type='text' v-model='userName' placeholder='请输入用户名' class='-inline -text-size-middle' v-enter-next='{next: "div#login-dialog input#password"}' autofocus='autofocus'/>
+					-->
 				</div>
 				<div class='item password'>
 					<input id='password' type='password' v-model='password' placeholder='请输入密码' class='-inline -text-size-middle'  v-on:keyup.enter='onClickLogin'/>
@@ -26,9 +33,14 @@
 </template>
 
 <script>
+import HeelInput from '@/components/Common/HeelInput/HeelInput';
 
 export default {
 	name: 'Login', 
+	
+	components: {
+		HeelInput
+	},
 	
 	data() {
 		return {
